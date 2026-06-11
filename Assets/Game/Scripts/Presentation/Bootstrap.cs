@@ -59,7 +59,6 @@ namespace DengeGame.Presentation
             IEventSelectionService selection = new WeightedEventSelectionService();
             IDecisionEffectService decisions = new DecisionEffectService();
             ISceneTransitionService transition = new SceneTransitionService();
-            IEndingEvaluator endings = new BoundaryEndingEvaluator();
 
             var database = Resources.Load<EventCardDatabase>(EventCardDatabase.ResourcesPath);
             if (database == null)
@@ -68,10 +67,20 @@ namespace DengeGame.Presentation
             Func<List<EventCard>> poolProvider = () =>
                 database != null ? database.BuildPool() : new List<EventCard>();
 
+            var characterDb = Resources.Load<CharacterDatabase>(CharacterDatabase.ResourcesPath);
+            if (characterDb == null)
+                Debug.LogWarning($"[Denge] CharacterDatabase bulunamadı ('{CharacterDatabase.ResourcesPath}'). " +
+                                 "'Denge/İçerik/Karakterleri Üret' çalıştırın.");
+            var characters = new CharacterDirectory(characterDb != null ? characterDb.BuildList() : new List<Character>());
+
+            IEndingEvaluator endings = new CompositeEndingEvaluator(
+                new BoundaryEndingEvaluator(),
+                new CharacterEndingEvaluator(characters.All));
+
             IGameFlow flow = new GameFlow(transition, () => Environment.TickCount,
                 poolProvider, selection, decisions, random, endings);
 
-            _services = new GameServices(random, time, save, selection, decisions, transition, flow);
+            _services = new GameServices(random, time, save, selection, decisions, transition, characters, flow);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => InjectControllers(scene);

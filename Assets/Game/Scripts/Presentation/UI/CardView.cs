@@ -27,6 +27,8 @@ namespace DengeGame.Presentation.UI
         private Canvas _canvas;
         private Image _background;
         private TextMeshProUGUI _leftText, _rightText, _leftHints, _rightHints;
+        private Image _avatar;
+        private TextMeshProUGUI _avatarInitials, _nameLabel;
 
         private Vector2 _home;
         private float _pointerStartX;
@@ -56,9 +58,14 @@ namespace DengeGame.Presentation.UI
             _background.color = UiTheme.Card;
             _background.raycastTarget = true;
 
-            var character = UiBuilder.CreateText(transform, "Character", "", UiTheme.FontBody, UiTheme.Accent);
-            UiBuilder.Anchor(UiBuilder.Rect(character), new Vector2(0, 1), new Vector2(1, 1),
-                new Vector2(40, -110), new Vector2(-40, -40));
+            // Karakter: tema renginde avatar (baş harf) + isim
+            _avatar = CharacterAvatar.Build(transform, out _avatarInitials);
+            UiBuilder.Anchor(UiBuilder.Rect(_avatar), new Vector2(0, 1), new Vector2(0, 1),
+                new Vector2(40, -140), new Vector2(140, -40));
+            _nameLabel = UiBuilder.CreateText(transform, "CharacterName", "", UiTheme.FontBody, UiTheme.Accent,
+                TextAlignmentOptions.Left);
+            UiBuilder.Anchor(UiBuilder.Rect(_nameLabel), new Vector2(0, 1), new Vector2(1, 1),
+                new Vector2(160, -130), new Vector2(-40, -50));
 
             var title = UiBuilder.CreateText(transform, "Title", "", UiTheme.FontTitle, UiTheme.CardText);
             UiBuilder.Anchor(UiBuilder.Rect(title), new Vector2(0, 0.62f), new Vector2(1, 0.82f),
@@ -93,15 +100,23 @@ namespace DengeGame.Presentation.UI
             SetOverlay(0f);
         }
 
+        /// <summary>Kartın karakter avatarını ve adını ayarlar (id bir karaktere çözülemezse id gösterilir).</summary>
+        public void SetCharacter(string displayName, ColorRGB color)
+        {
+            _nameLabel.text = displayName ?? "";
+            _avatarInitials.text = CharacterAvatar.Initials(displayName);
+            _avatar.color = CharacterAvatar.ToColor(color);
+        }
+
         public void Setup(EventCard card)
         {
-            transform.Find("Character").GetComponent<TextMeshProUGUI>().text = card.CharacterId ?? "";
             transform.Find("Title").GetComponent<TextMeshProUGUI>().text = card.Title ?? "";
             transform.Find("Description").GetComponent<TextMeshProUGUI>().text = card.Description ?? "";
             _leftText.text = card.LeftText ?? "";
             _rightText.text = card.RightText ?? "";
             _leftHints.text = BuildHints(DecisionPreview.Preview(card, DecisionSide.Left));
             _rightHints.text = BuildHints(DecisionPreview.Preview(card, DecisionSide.Right));
+            SetCharacter(card.CharacterId, new ColorRGB(0.30f, 0.40f, 0.55f)); // çözülemezse varsayılan
 
             _home = _rect.anchoredPosition;
             _committed = false;

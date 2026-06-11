@@ -19,6 +19,7 @@ namespace DengeGame.Presentation
 
         private readonly Dictionary<CountryValue, StatBarView> _bars = new Dictionary<CountryValue, StatBarView>();
         private RectTransform _cardArea;
+        private Transform _overlayParent;
         private CardView _currentCard;
         private TextMeshProUGUI _info;
 
@@ -58,6 +59,7 @@ namespace DengeGame.Presentation
         private void BuildHud()
         {
             var safe = UiBuilder.CreateCanvas("GameUI", out var canvas);
+            _overlayParent = canvas.transform;
             var bg = UiBuilder.CreateImage(canvas.transform, "Bg", UiTheme.Background);
             UiBuilder.Stretch(UiBuilder.Rect(bg));
             bg.transform.SetAsFirstSibling();
@@ -93,9 +95,9 @@ namespace DengeGame.Presentation
                 UiTheme.FontSmall, UiTheme.Accent, UiTheme.TextLight, OnSettings);
             UiBuilder.Anchor(UiBuilder.Rect(settings), new Vector2(0.04f, 0.08f), new Vector2(0.30f, 0.5f), Vector2.zero, Vector2.zero);
 
-            var history = UiBuilder.CreateButton(bottom.transform, "History", "Geçmiş",
-                UiTheme.FontSmall, UiTheme.Accent, UiTheme.TextLight, OnHistory);
-            UiBuilder.Anchor(UiBuilder.Rect(history), new Vector2(0.70f, 0.08f), new Vector2(0.96f, 0.5f), Vector2.zero, Vector2.zero);
+            var characters = UiBuilder.CreateButton(bottom.transform, "Characters", "Karakterler",
+                UiTheme.FontSmall, UiTheme.Accent, UiTheme.TextLight, OnCharacters);
+            UiBuilder.Anchor(UiBuilder.Rect(characters), new Vector2(0.70f, 0.08f), new Vector2(0.96f, 0.5f), Vector2.zero, Vector2.zero);
 
             // Erişilebilirlik: kaydırma yerine sol/sağ karar butonları
             if (UiPreferences.ShowDecisionButtons)
@@ -122,6 +124,8 @@ namespace DengeGame.Presentation
             r.sizeDelta = new Vector2(940, 1180);
             r.anchoredPosition = Vector2.zero;
             _currentCard.Setup(card);
+            var ch = _services.Characters?.Get(card.CharacterId);
+            if (ch != null) _currentCard.SetCharacter(ch.Name, ch.ThemeColor);
             _currentCard.Committed += Commit;
 
             RefreshInfo();
@@ -170,6 +174,11 @@ namespace DengeGame.Presentation
         }
 
         private void OnSettings() => Debug.Log("[Denge] Ayarlar (Faz 13'te gelecek).");
-        private void OnHistory() => Debug.Log("[Denge] Geçmiş kararlar (Faz 9'da gelecek).");
+
+        private void OnCharacters()
+        {
+            if (_overlayParent == null || _services.Characters == null) return;
+            CharacterPanelView.Show(_overlayParent, _services.Characters, _loop.Session.State);
+        }
     }
 }

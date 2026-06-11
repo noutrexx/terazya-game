@@ -16,6 +16,7 @@ namespace DengeGame.Presentation
         public IEventSelectionService EventSelection { get; }
         public IDecisionEffectService Decisions { get; }
         public ISceneTransitionService SceneTransition { get; }
+        public CharacterDirectory Characters { get; }
         public IGameFlow Flow { get; }
 
         public GameServices(
@@ -25,6 +26,7 @@ namespace DengeGame.Presentation
             IEventSelectionService eventSelection,
             IDecisionEffectService decisions,
             ISceneTransitionService sceneTransition,
+            CharacterDirectory characters,
             IGameFlow flow)
         {
             Random = Guard.NotNull(random, nameof(random));
@@ -33,6 +35,7 @@ namespace DengeGame.Presentation
             EventSelection = Guard.NotNull(eventSelection, nameof(eventSelection));
             Decisions = Guard.NotNull(decisions, nameof(decisions));
             SceneTransition = Guard.NotNull(sceneTransition, nameof(sceneTransition));
+            Characters = Guard.NotNull(characters, nameof(characters));
             Flow = Guard.NotNull(flow, nameof(flow));
         }
     }

@@ -70,6 +70,42 @@ namespace DengeGame.Presentation.UI
             return btn;
         }
 
+        /// <summary>Dikey kaydırılabilir içerik alanı kurar ve içerik (content) RectTransform'unu döndürür.</summary>
+        public static RectTransform CreateScrollView(Transform parent, float spacing = 12f)
+        {
+            var scrollGo = new GameObject("Scroll", typeof(Image), typeof(ScrollRect), typeof(RectMask2D));
+            scrollGo.transform.SetParent(parent, false);
+            scrollGo.GetComponent<Image>().color = new Color(0, 0, 0, 0.001f);
+            var scroll = scrollGo.GetComponent<ScrollRect>();
+            scroll.horizontal = false;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+            scroll.scrollSensitivity = 30f;
+
+            var content = new GameObject("Content", typeof(RectTransform),
+                typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
+            var contentRect = content.GetComponent<RectTransform>();
+            contentRect.SetParent(scrollGo.transform, false);
+            contentRect.anchorMin = new Vector2(0, 1);
+            contentRect.anchorMax = new Vector2(1, 1);
+            contentRect.pivot = new Vector2(0.5f, 1f);
+            contentRect.offsetMin = new Vector2(0, 0);
+            contentRect.offsetMax = new Vector2(0, 0);
+
+            var layout = content.GetComponent<VerticalLayoutGroup>();
+            layout.spacing = spacing;
+            layout.padding = new RectOffset(20, 20, 20, 20);
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = true;
+            layout.childForceExpandHeight = false;
+
+            content.GetComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+            scroll.content = contentRect;
+            scroll.viewport = (RectTransform)scrollGo.transform;
+            return contentRect;
+        }
+
         public static RectTransform Rect(Component c) => (RectTransform)c.transform;
 
         public static void Anchor(RectTransform r, Vector2 min, Vector2 max, Vector2 offMin, Vector2 offMax)

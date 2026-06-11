@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794d1490306a74f4486e099c2ac3fc38, type: 3}
+  m_Name: Character_maliye
+  m_EditorClassIdentifier: 
+  character:
+    Id: maliye
+    Name: Elif Demir
+    Role: "Maliye Bakan\u0131"
+    Description: "B\xFCt\xE7e ve ekonomik istikrardan sorumlu. Say\u0131larla konu\u015Fur."
+    ThemeColor:
+      R: 0.2
+      G: 0.55
+      B: 0.45
+    RelationshipTierNames: []
+    LowOutcome: "Ekonomi kararlar\u0131n\u0131za g\xFCveni kalmad\u0131; reformlar\u0131
+      yava\u015Flat\u0131yor."
+    HighOutcome: "Size tam destek veriyor; cesur ekonomik ad\u0131mlar\u0131 kolayla\u015Ft\u0131r\u0131yor."
+    EnableLowEnding: 0
+    LowEndingThreshold: -80
+    LowEndingReason: 
+    EnableHighEnding: 0
+    HighEndingThreshold: 80
+    HighEndingReason: 

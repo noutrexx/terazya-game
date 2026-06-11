@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794d1490306a74f4486e099c2ac3fc38, type: 3}
+  m_Name: Character_gazeteci
+  m_EditorClassIdentifier: 
+  character:
+    Id: gazeteci
+    Name: Aylin Toprak
+    Role: "Gazeteciler Birli\u011Fi Temsilcisi"
+    Description: "Bas\u0131n \xF6zg\xFCrl\xFC\u011F\xFCn\xFCn ve \u015Feffafl\u0131\u011F\u0131n
+      savunucusu."
+    ThemeColor:
+      R: 0.35
+      G: 0.45
+      B: 0.7
+    RelationshipTierNames: []
+    LowOutcome: "Bas\u0131n kar\u015F\u0131 cephe ald\u0131; her ad\u0131m\u0131n\u0131z
+      man\u015Fetlerde sorgulan\u0131yor."
+    HighOutcome: "Ba\u011F\u0131ms\u0131z bas\u0131n g\xFCven veriyor; mesaj\u0131n\u0131z
+      halka net ula\u015F\u0131yor."
+    EnableLowEnding: 0
+    LowEndingThreshold: -80
+    LowEndingReason: 
+    EnableHighEnding: 0
+    HighEndingThreshold: 80
+    HighEndingReason: 

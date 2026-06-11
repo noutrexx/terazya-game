@@ -28,6 +28,7 @@ namespace DengeGame.Domain
 
         public List<ScheduledEvent> ScheduledEvents { get; } = new List<ScheduledEvent>();
         public List<ActiveTimedEffect> ActiveTimedEffects { get; } = new List<ActiveTimedEffect>();
+        public List<RelationshipChange> RelationshipHistory { get; } = new List<RelationshipChange>();
 
         public HashSet<string> Flags { get; } = new HashSet<string>();
         public HashSet<string> UnlockedAchievements { get; } = new HashSet<string>();
@@ -104,7 +105,10 @@ namespace DengeGame.Domain
             int previous = GetRelationship(characterId);
             int current = ClampRelationship(previous + delta);
             CharacterRelationships[characterId] = current;
-            return current - previous;
+            int net = current - previous;
+            if (net != 0)
+                RelationshipHistory.Add(new RelationshipChange(characterId, net, current, CurrentTurn));
+            return net;
         }
 
         // --- Politikalar / krizler ---

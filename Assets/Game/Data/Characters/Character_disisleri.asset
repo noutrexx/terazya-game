@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794d1490306a74f4486e099c2ac3fc38, type: 3}
+  m_Name: Character_disisleri
+  m_EditorClassIdentifier: 
+  character:
+    Id: disisleri
+    Name: "Cem Ar\u0131"
+    Role: "D\u0131\u015Fi\u015Fleri Dan\u0131\u015Fman\u0131"
+    Description: "D\u0131\u015F ili\u015Fkiler ve ittifaklar konusunda stratejist."
+    ThemeColor:
+      R: 0.4
+      G: 0.4
+      B: 0.65
+    RelationshipTierNames: []
+    LowOutcome: "Diplomatik kanallar t\u0131kand\u0131; uluslararas\u0131 yaln\u0131zl\u0131k
+      riski b\xFCy\xFCyor."
+    HighOutcome: "G\xFC\xE7l\xFC diplomasi; ittifaklar ve d\u0131\u015F destek kap\u0131lar\u0131
+      a\xE7\u0131l\u0131yor."
+    EnableLowEnding: 0
+    LowEndingThreshold: -80
+    LowEndingReason: 
+    EnableHighEnding: 0
+    HighEndingThreshold: 80
+    HighEndingReason: 

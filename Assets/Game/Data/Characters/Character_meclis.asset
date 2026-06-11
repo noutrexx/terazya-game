@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794d1490306a74f4486e099c2ac3fc38, type: 3}
+  m_Name: Character_meclis
+  m_EditorClassIdentifier: 
+  character:
+    Id: meclis
+    Name: Naz Eren
+    Role: "Halk Meclisi S\xF6zc\xFCs\xFC"
+    Description: "Halk\u0131n temsilcisi; meclisin nabz\u0131n\u0131 y\xF6netime
+      aktar\u0131r."
+    ThemeColor:
+      R: 0.5
+      G: 0.35
+      B: 0.55
+    RelationshipTierNames: []
+    LowOutcome: "Meclis k\xFCst\xFC; yasalar\u0131n\u0131z t\u0131kan\u0131yor."
+    HighOutcome: "Meclis deste\u011Fi tam; reform paketleri h\u0131zla ge\xE7iyor."
+    EnableLowEnding: 0
+    LowEndingThreshold: -80
+    LowEndingReason: 
+    EnableHighEnding: 0
+    HighEndingThreshold: 80
+    HighEndingReason: 

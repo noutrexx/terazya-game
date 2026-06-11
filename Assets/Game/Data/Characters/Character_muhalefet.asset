@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794d1490306a74f4486e099c2ac3fc38, type: 3}
+  m_Name: Character_muhalefet
+  m_EditorClassIdentifier: 
+  character:
+    Id: muhalefet
+    Name: Selin Kaya
+    Role: Muhalefet Lideri
+    Description: "Y\xF6netimi denetler, halk\u0131n ho\u015Fnutsuzlu\u011Funu meclise
+      ta\u015F\u0131r."
+    ThemeColor:
+      R: 0.7
+      G: 0.35
+      B: 0.3
+    RelationshipTierNames: []
+    LowOutcome: "Sert muhalefet; her karar\u0131n\u0131z\u0131 kamuoyunda zorluyor."
+    HighOutcome: "Beklenmedik bir uzla\u015Fma; reformlar\u0131n\u0131za zemin haz\u0131rl\u0131yor."
+    EnableLowEnding: 0
+    LowEndingThreshold: -80
+    LowEndingReason: 
+    EnableHighEnding: 0
+    HighEndingThreshold: 80
+    HighEndingReason: 
