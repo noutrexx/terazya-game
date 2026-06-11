@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4471a15c7aedd43bdcd35f9a62431c, type: 3}
+  m_Name: Card_iliski_dusuk_general
+  m_EditorClassIdentifier: 
+  card:
+    Id: iliski_dusuk_general
+    Title: "Orduda Ho\u015Fnutsuzluk"
+    CharacterId: genelkurmay
+    Description: "Komuta kademesiyle ili\u015Fkiler gergin."
+    LeftText: Taviz ver
+    RightText: Sert dur
+    LeftEffects:
+    - Kind: 6
+      Value: 0
+      IntA: 20
+      IntB: 0
+      Text: general
+      Bool: 0
+    - Kind: 0
+      Value: 3
+      IntA: -3
+      IntB: 0
+      Text: 
+      Bool: 0
+    RightEffects:
+    - Kind: 6
+      Value: 0
+      IntA: -10
+      IntB: 0
+      Text: general
+      Bool: 0
+    - Kind: 0
+      Value: 2
+      IntA: -3
+      IntB: 0
+      Text: 
+      Bool: 0
+    Category: Genel
+    Priority: 0
+    Weight: 1
+    MinTurn: 0
+    MaxTurn: 2147483647
+    OneShot: 0
+    CooldownTurns: 0
+    RequiredFlags: []
+    ForbiddenFlags: []
+    RequiredPolicies: []
+    ForbiddenPolicies: []
+    ValueConditions: []
+    RelationshipConditions:
+    - CharacterId: general
+      Min: -100
+      Max: -40
+    ChainId: 
+    PreviousEventId: 
+    IsEmergency: 0
+    IsFallback: 0

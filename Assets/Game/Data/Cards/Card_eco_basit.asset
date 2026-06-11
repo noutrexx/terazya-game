@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4471a15c7aedd43bdcd35f9a62431c, type: 3}
+  m_Name: Card_eco_basit
+  m_EditorClassIdentifier: 
+  card:
+    Id: eco_basit
+    Title: "B\xFCt\xE7e G\xF6r\xFC\u015Fmesi"
+    CharacterId: maliye
+    Description: "Bakanl\u0131k yeni b\xFCt\xE7eyi sunuyor. \xD6nceli\u011Fi siz
+      belirleyin."
+    LeftText: "Yat\u0131r\u0131ma a\u011F\u0131rl\u0131k ver"
+    RightText: "Tasarrufa y\xF6nel"
+    LeftEffects:
+    - Kind: 0
+      Value: 0
+      IntA: 6
+      IntB: 0
+      Text: 
+      Bool: 0
+    - Kind: 0
+      Value: 4
+      IntA: -3
+      IntB: 0
+      Text: 
+      Bool: 0
+    RightEffects:
+    - Kind: 0
+      Value: 0
+      IntA: -2
+      IntB: 0
+      Text: 
+      Bool: 0
+    - Kind: 0
+      Value: 1
+      IntA: 3
+      IntB: 0
+      Text: 
+      Bool: 0
+    Category: Genel
+    Priority: 0
+    Weight: 1
+    MinTurn: 0
+    MaxTurn: 2147483647
+    OneShot: 0
+    CooldownTurns: 0
+    RequiredFlags: []
+    ForbiddenFlags: []
+    RequiredPolicies: []
+    ForbiddenPolicies: []
+    ValueConditions: []
+    RelationshipConditions: []
+    ChainId: 
+    PreviousEventId: 
+    IsEmergency: 0
+    IsFallback: 0

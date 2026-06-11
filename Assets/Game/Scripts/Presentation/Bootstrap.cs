@@ -52,7 +52,7 @@ namespace DengeGame.Presentation
             IRandomService random = new SystemRandomService(bootSeed);
             ITimeService time = new UnityTimeService();
             ISaveService save = new JsonFileSaveService();
-            IEventSelectionService selection = new BasicEventSelectionService();
+            IEventSelectionService selection = new WeightedEventSelectionService();
             IDecisionEffectService decisions = new DecisionEffectService();
             ISceneTransitionService transition = new SceneTransitionService();
             IGameFlow flow = new GameFlow(transition, () => Environment.TickCount);
