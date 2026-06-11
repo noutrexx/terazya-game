@@ -1,0 +1,17 @@
+{
+    "name": "DengeGame.Application",
+    "rootNamespace": "DengeGame.Application",
+    "references": [
+        "DengeGame.Core",
+        "DengeGame.Domain"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
