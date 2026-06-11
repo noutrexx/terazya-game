@@ -5,7 +5,8 @@
         "DengeGame.Core",
         "DengeGame.Domain",
         "DengeGame.Application",
-        "DengeGame.Infrastructure"
+        "DengeGame.Infrastructure",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

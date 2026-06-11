@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
 using DengeGame.Infrastructure;
+using DengeGame.Infrastructure.Data;
 using DengeGame.Application;
 using DengeGame.Application.Effects;
+using DengeGame.Application.Endings;
+using DengeGame.Domain;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,7 +59,17 @@ namespace DengeGame.Presentation
             IEventSelectionService selection = new WeightedEventSelectionService();
             IDecisionEffectService decisions = new DecisionEffectService();
             ISceneTransitionService transition = new SceneTransitionService();
-            IGameFlow flow = new GameFlow(transition, () => Environment.TickCount);
+            IEndingEvaluator endings = new BoundaryEndingEvaluator();
+
+            var database = Resources.Load<EventCardDatabase>(EventCardDatabase.ResourcesPath);
+            if (database == null)
+                Debug.LogError($"[Denge] EventCardDatabase Resources'ta bulunamadı " +
+                               $"('{EventCardDatabase.ResourcesPath}'). 'Denge/İçerik/Test Kartları Üret' çalıştırın.");
+            Func<List<EventCard>> poolProvider = () =>
+                database != null ? database.BuildPool() : new List<EventCard>();
+
+            IGameFlow flow = new GameFlow(transition, () => Environment.TickCount,
+                poolProvider, selection, decisions, random, endings);
 
             _services = new GameServices(random, time, save, selection, decisions, transition, flow);
         }
