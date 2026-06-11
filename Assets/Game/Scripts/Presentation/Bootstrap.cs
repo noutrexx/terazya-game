@@ -1,6 +1,7 @@
 using System;
 using DengeGame.Infrastructure;
 using DengeGame.Application;
+using DengeGame.Application.Effects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,10 +53,11 @@ namespace DengeGame.Presentation
             ITimeService time = new UnityTimeService();
             ISaveService save = new JsonFileSaveService();
             IEventSelectionService selection = new BasicEventSelectionService();
+            IDecisionEffectService decisions = new DecisionEffectService();
             ISceneTransitionService transition = new SceneTransitionService();
             IGameFlow flow = new GameFlow(transition, () => Environment.TickCount);
 
-            _services = new GameServices(random, time, save, selection, transition, flow);
+            _services = new GameServices(random, time, save, selection, decisions, transition, flow);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => InjectControllers(scene);

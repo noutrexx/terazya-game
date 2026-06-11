@@ -1,4 +1,5 @@
 using DengeGame.Application;
+using DengeGame.Application.Effects;
 using DengeGame.Core;
 
 namespace DengeGame.Presentation
@@ -13,6 +14,7 @@ namespace DengeGame.Presentation
         public ITimeService Time { get; }
         public ISaveService Save { get; }
         public IEventSelectionService EventSelection { get; }
+        public IDecisionEffectService Decisions { get; }
         public ISceneTransitionService SceneTransition { get; }
         public IGameFlow Flow { get; }
 
@@ -21,6 +23,7 @@ namespace DengeGame.Presentation
             ITimeService time,
             ISaveService save,
             IEventSelectionService eventSelection,
+            IDecisionEffectService decisions,
             ISceneTransitionService sceneTransition,
             IGameFlow flow)
         {
@@ -28,6 +31,7 @@ namespace DengeGame.Presentation
             Time = Guard.NotNull(time, nameof(time));
             Save = Guard.NotNull(save, nameof(save));
             EventSelection = Guard.NotNull(eventSelection, nameof(eventSelection));
+            Decisions = Guard.NotNull(decisions, nameof(decisions));
             SceneTransition = Guard.NotNull(sceneTransition, nameof(sceneTransition));
             Flow = Guard.NotNull(flow, nameof(flow));
         }
