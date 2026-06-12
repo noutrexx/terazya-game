@@ -75,8 +75,8 @@ namespace DengeGame.Tests.EditMode
 
             _service.ApplyEffects(state, effects, new StubRandom());
 
-            Assert.Contains("ubi", state.ActivePolicyIds);
-            Assert.Contains("kuraklik", state.ActiveCrisisIds);
+            Assert.IsTrue(state.HasPolicy("ubi"));
+            Assert.IsTrue(state.HasCrisis("kuraklik"));
         }
 
         [Test]

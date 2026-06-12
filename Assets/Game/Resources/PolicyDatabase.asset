@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: PolicyDatabase
+  m_EditorClassIdentifier: DengeGame.Infrastructure:DengeGame.Infrastructure.Data:PolicyDatabase
+  policies:
+  - {fileID: 11400000, guid: e9bc7ffc75e97314cbf8669fc026591c, type: 2}
+  - {fileID: 11400000, guid: 0935f0fe358be3b42b06a753434e03a1, type: 2}
+  - {fileID: 11400000, guid: 2665b266112710c4f8a241cd4a4e845f, type: 2}
+  - {fileID: 11400000, guid: 84a17151c917de54f90031dc50fbfd5d, type: 2}
+  - {fileID: 11400000, guid: 4579eb0113552b14188f4bfbecdedc99, type: 2}
+  - {fileID: 11400000, guid: 598c5ba1d926e864abf4ac214e4d01fe, type: 2}

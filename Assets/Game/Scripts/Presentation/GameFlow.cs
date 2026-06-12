@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DengeGame.Application;
 using DengeGame.Application.Effects;
 using DengeGame.Application.Endings;
+using DengeGame.Application.Policies;
 using DengeGame.Domain;
 
 namespace DengeGame.Presentation
@@ -20,13 +21,15 @@ namespace DengeGame.Presentation
         private readonly IDecisionEffectService _effects;
         private readonly IRandomService _random;
         private readonly IEndingEvaluator _endings;
+        private readonly PolicyCrisisProcessor _processor;
 
         public GameSession CurrentSession { get; private set; }
         public GameLoop CurrentLoop { get; private set; }
 
         public GameFlow(ISceneTransitionService scenes, Func<int> seedFactory,
             Func<List<EventCard>> poolProvider, IEventSelectionService selection,
-            IDecisionEffectService effects, IRandomService random, IEndingEvaluator endings)
+            IDecisionEffectService effects, IRandomService random, IEndingEvaluator endings,
+            PolicyCrisisProcessor processor)
         {
             _scenes = scenes ?? throw new ArgumentNullException(nameof(scenes));
             _seedFactory = seedFactory ?? throw new ArgumentNullException(nameof(seedFactory));
@@ -35,6 +38,7 @@ namespace DengeGame.Presentation
             _effects = effects ?? throw new ArgumentNullException(nameof(effects));
             _random = random ?? throw new ArgumentNullException(nameof(random));
             _endings = endings ?? throw new ArgumentNullException(nameof(endings));
+            _processor = processor ?? throw new ArgumentNullException(nameof(processor));
         }
 
         public void StartNewGame(int? seed = null)
@@ -46,7 +50,7 @@ namespace DengeGame.Presentation
             CurrentSession = new GameSession(state);
 
             var pool = _poolProvider() ?? new List<EventCard>();
-            CurrentLoop = new GameLoop(CurrentSession, pool, _selection, _effects, _random, _endings);
+            CurrentLoop = new GameLoop(CurrentSession, pool, _selection, _effects, _random, _endings, _processor);
 
             _scenes.Load(GameScene.Game);
         }

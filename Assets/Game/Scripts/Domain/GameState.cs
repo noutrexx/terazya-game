@@ -17,8 +17,8 @@ namespace DengeGame.Domain
 
         public CountryStats Stats { get; }
 
-        public List<string> ActivePolicyIds { get; } = new List<string>();
-        public List<string> ActiveCrisisIds { get; } = new List<string>();
+        public List<ActivePolicy> ActivePolicies { get; } = new List<ActivePolicy>();
+        public List<ActiveCrisis> ActiveCrises { get; } = new List<ActiveCrisis>();
         public Dictionary<string, int> CharacterRelationships { get; } = new Dictionary<string, int>();
 
         public HashSet<string> ShownCardIds { get; } = new HashSet<string>();
@@ -113,23 +113,53 @@ namespace DengeGame.Domain
 
         // --- Politikalar / krizler ---
 
+        public ActivePolicy GetActivePolicy(string policyId)
+        {
+            foreach (var p in ActivePolicies)
+                if (p.PolicyId == policyId) return p;
+            return null;
+        }
+
+        public bool HasPolicy(string policyId) => GetActivePolicy(policyId) != null;
+
         public bool StartPolicy(string policyId)
         {
-            if (string.IsNullOrEmpty(policyId) || ActivePolicyIds.Contains(policyId)) return false;
-            ActivePolicyIds.Add(policyId);
+            if (string.IsNullOrEmpty(policyId) || HasPolicy(policyId)) return false;
+            ActivePolicies.Add(new ActivePolicy(policyId));
             return true;
         }
 
-        public bool EndPolicy(string policyId) => ActivePolicyIds.Remove(policyId);
+        public bool EndPolicy(string policyId)
+        {
+            var p = GetActivePolicy(policyId);
+            if (p == null) return false;
+            ActivePolicies.Remove(p);
+            return true;
+        }
+
+        public ActiveCrisis GetActiveCrisis(string crisisId)
+        {
+            foreach (var c in ActiveCrises)
+                if (c.CrisisId == crisisId) return c;
+            return null;
+        }
+
+        public bool HasCrisis(string crisisId) => GetActiveCrisis(crisisId) != null;
 
         public bool StartCrisis(string crisisId)
         {
-            if (string.IsNullOrEmpty(crisisId) || ActiveCrisisIds.Contains(crisisId)) return false;
-            ActiveCrisisIds.Add(crisisId);
+            if (string.IsNullOrEmpty(crisisId) || HasCrisis(crisisId)) return false;
+            ActiveCrises.Add(new ActiveCrisis(crisisId));
             return true;
         }
 
-        public bool EndCrisis(string crisisId) => ActiveCrisisIds.Remove(crisisId);
+        public bool EndCrisis(string crisisId)
+        {
+            var c = GetActiveCrisis(crisisId);
+            if (c == null) return false;
+            ActiveCrises.Remove(c);
+            return true;
+        }
 
         // --- Zamanlama / süreli etkiler ---
 

@@ -25,11 +25,11 @@ namespace DengeGame.Application.Selection
 
             if (card.RequiredPolicies != null)
                 foreach (var p in card.RequiredPolicies)
-                    if (!state.ActivePolicyIds.Contains(p)) return false;
+                    if (!state.HasPolicy(p)) return false;
 
             if (card.ForbiddenPolicies != null)
                 foreach (var p in card.ForbiddenPolicies)
-                    if (state.ActivePolicyIds.Contains(p)) return false;
+                    if (state.HasPolicy(p)) return false;
 
             if (card.ValueConditions != null)
                 foreach (var vc in card.ValueConditions)

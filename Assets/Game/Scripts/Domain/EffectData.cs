@@ -14,7 +14,8 @@ namespace DengeGame.Domain
         ChangeRelationship = 6,
         ScheduleEvent = 7,
         TimedValue = 8,
-        EndGame = 9
+        EndGame = 9,
+        EndPolicy = 10
     }
 
     /// <summary>
@@ -75,5 +76,8 @@ namespace DengeGame.Domain
 
         public static EffectData EndGame(string reason) =>
             new EffectData { Kind = EffectKind.EndGame, Text = reason };
+
+        public static EffectData EndPolicy(string policyId) =>
+            new EffectData { Kind = EffectKind.EndPolicy, Text = policyId };
     }
 }

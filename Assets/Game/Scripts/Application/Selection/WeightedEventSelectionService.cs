@@ -47,7 +47,7 @@ namespace DengeGame.Application
 
             // 2) Aktif kriz varsa acil kartları öne al; yoksa acil kartları dışarıda tut.
             List<EventCard> candidates;
-            if (state.ActiveCrisisIds.Count > 0)
+            if (state.ActiveCrises.Count > 0)
             {
                 var emergencies = eligible.Where(c => c.IsEmergency).ToList();
                 candidates = emergencies.Count > 0 ? emergencies : eligible.Where(c => !c.IsEmergency).ToList();

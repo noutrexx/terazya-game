@@ -35,6 +35,8 @@ namespace DengeGame.Application.Effects
                     return new TimedValueEffect(data.Value, data.IntA, data.IntB);
                 case EffectKind.EndGame:
                     return new EndGameEffect(data.Text);
+                case EffectKind.EndPolicy:
+                    return new EndPolicyEffect(data.Text);
                 default:
                     return null;
             }

@@ -161,6 +161,18 @@ namespace DengeGame.Application.Effects
             context.State.AddTimedEffect(new ActiveTimedEffect(Value, PerTurnDelta, DurationTurns, context.Reason));
     }
 
+    /// <summary>Aktif bir politikayı erken iptal eder (durumdan kaldırır).</summary>
+    public sealed class EndPolicyEffect : IEffect
+    {
+        public string PolicyId { get; }
+        public EndPolicyEffect(string policyId) => PolicyId = policyId;
+
+        public Result Validate() =>
+            string.IsNullOrWhiteSpace(PolicyId) ? Result.Failure("EndPolicyEffect: politika id boş.") : Result.Success();
+
+        public void Apply(EffectContext context) => context.State.EndPolicy(PolicyId);
+    }
+
     /// <summary>Yönetimi doğrudan sonlandıran özel etki.</summary>
     public sealed class EndGameEffect : IEffect
     {

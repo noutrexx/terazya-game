@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25feb0656e5c52046b256d9423fae699, type: 3}
+  m_Name: Crisis_sinir_gerilimi
+  m_EditorClassIdentifier: 
+  crisis:
+    Id: sinir_gerilimi
+    Name: "S\u0131n\u0131r Gerilimi"
+    Description: "Kom\u015Fu s\u0131n\u0131rda hareketlilik."
+    Stages:
+    - Name: Diplomatik Kriz
+      DurationTurns: 2
+      EnterEffects:
+      - Kind: 0
+        Value: 5
+        IntA: -3
+        IntB: 0
+        Text: 
+        Bool: 0
+      PerTurnEffects:
+      - Kind: 0
+        Value: 5
+        IntA: -1
+        IntB: 0
+        Text: 
+        Bool: 0
+    - Name: "Askeri Y\u0131\u011F\u0131nak"
+      DurationTurns: 2
+      EnterEffects:
+      - Kind: 0
+        Value: 2
+        IntA: -4
+        IntB: 0
+        Text: 
+        Bool: 0
+      - Kind: 0
+        Value: 0
+        IntA: -2
+        IntB: 0
+        Text: 
+        Bool: 0
+      PerTurnEffects:
+      - Kind: 0
+        Value: 2
+        IntA: -1
+        IntB: 0
+        Text: 
+        Bool: 0
+    FailEffects:
+    - Kind: 0
+      Value: 2
+      IntA: -8
+      IntB: 0
+      Text: 
+      Bool: 0
+    - Kind: 0
+      Value: 5
+      IntA: -6
+      IntB: 0
+      Text: 
+      Bool: 0
+    FailEndingReason: "S\u0131n\u0131r Sava\u015F\u0131"
+    FailEndingChance: 0.5

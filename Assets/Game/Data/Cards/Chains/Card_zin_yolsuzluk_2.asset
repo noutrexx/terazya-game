@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4471a15c7aedd43bdcd35f9a62431c, type: 3}
+  m_Name: Card_zin_yolsuzluk_2
+  m_EditorClassIdentifier: 
+  card:
+    Id: zin_yolsuzluk_2
+    Title: "Soru\u015Fturma Derinle\u015Fiyor"
+    CharacterId: muhalefet
+    Description: "\u0130zler \xFCst kademeye uzan\u0131yor."
+    LeftText: Sonuna kadar git
+    RightText: "S\u0131n\u0131rla"
+    LeftEffects:
+    - Kind: 0
+      Value: 1
+      IntA: 5
+      IntB: 0
+      Text: 
+      Bool: 0
+    - Kind: 0
+      Value: 0
+      IntA: -3
+      IntB: 0
+      Text: 
+      Bool: 0
+    - Kind: 7
+      Value: 0
+      IntA: 2
+      IntB: 0
+      Text: zin_yolsuzluk_3
+      Bool: 0
+    RightEffects:
+    - Kind: 0
+      Value: 1
+      IntA: -2
+      IntB: 0
+      Text: 
+      Bool: 0
+    - Kind: 7
+      Value: 0
+      IntA: 2
+      IntB: 0
+      Text: zin_yolsuzluk_3
+      Bool: 0
+    Category: Zincir
+    Priority: 0
+    Weight: 1
+    MinTurn: 0
+    MaxTurn: 2147483647
+    OneShot: 0
+    CooldownTurns: 0
+    RequiredFlags: []
+    ForbiddenFlags: []
+    RequiredPolicies: []
+    ForbiddenPolicies: []
+    ValueConditions: []
+    RelationshipConditions: []
+    ChainId: 
+    PreviousEventId: zin_yolsuzluk_1
+    IsEmergency: 0
+    IsFallback: 0

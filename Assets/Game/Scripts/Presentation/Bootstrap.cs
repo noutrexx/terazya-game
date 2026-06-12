@@ -5,6 +5,7 @@ using DengeGame.Infrastructure.Data;
 using DengeGame.Application;
 using DengeGame.Application.Effects;
 using DengeGame.Application.Endings;
+using DengeGame.Application.Policies;
 using DengeGame.Domain;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -77,8 +78,14 @@ namespace DengeGame.Presentation
                 new BoundaryEndingEvaluator(),
                 new CharacterEndingEvaluator(characters.All));
 
+            var policyDb = Resources.Load<PolicyDatabase>(PolicyDatabase.ResourcesPath);
+            var crisisDb = Resources.Load<CrisisDatabase>(CrisisDatabase.ResourcesPath);
+            var policyRegistry = new PolicyRegistry(policyDb != null ? policyDb.BuildList() : new List<PolicyDefinition>());
+            var crisisRegistry = new CrisisRegistry(crisisDb != null ? crisisDb.BuildList() : new List<CrisisDefinition>());
+            var processor = new PolicyCrisisProcessor(policyRegistry, crisisRegistry);
+
             IGameFlow flow = new GameFlow(transition, () => Environment.TickCount,
-                poolProvider, selection, decisions, random, endings);
+                poolProvider, selection, decisions, random, endings, processor);
 
             _services = new GameServices(random, time, save, selection, decisions, transition, characters, flow);
         }

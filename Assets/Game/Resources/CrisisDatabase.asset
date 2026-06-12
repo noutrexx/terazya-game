@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: CrisisDatabase
+  m_EditorClassIdentifier: DengeGame.Infrastructure:DengeGame.Infrastructure.Data:CrisisDatabase
+  crises:
+  - {fileID: 11400000, guid: 7ab5c8bda7f92e74d8d9ca338036be36, type: 2}
+  - {fileID: 11400000, guid: 1fe92580949d5f744b0646d3b02859c3, type: 2}
+  - {fileID: 11400000, guid: 01964d9552e096240bbe778e6ea068ae, type: 2}
+  - {fileID: 11400000, guid: 291ee1718cc77ac4da99af826474c6fb, type: 2}

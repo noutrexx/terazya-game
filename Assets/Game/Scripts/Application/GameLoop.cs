@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DengeGame.Application.Effects;
 using DengeGame.Application.Endings;
+using DengeGame.Application.Policies;
 using DengeGame.Core;
 using DengeGame.Domain;
 
@@ -20,6 +21,7 @@ namespace DengeGame.Application
         private readonly IDecisionEffectService _effects;
         private readonly IRandomService _random;
         private readonly IEndingEvaluator _endings;
+        private readonly PolicyCrisisProcessor _processor;
 
         public EventCard CurrentCard { get; private set; }
 
@@ -33,7 +35,8 @@ namespace DengeGame.Application
 
         public GameLoop(GameSession session, IReadOnlyList<EventCard> pool,
             IEventSelectionService selection, IDecisionEffectService effects,
-            IRandomService random, IEndingEvaluator endings)
+            IRandomService random, IEndingEvaluator endings,
+            PolicyCrisisProcessor processor = null)
         {
             _session = Guard.NotNull(session, nameof(session));
             _pool = Guard.NotNull(pool, nameof(pool));
@@ -41,6 +44,7 @@ namespace DengeGame.Application
             _effects = Guard.NotNull(effects, nameof(effects));
             _random = Guard.NotNull(random, nameof(random));
             _endings = Guard.NotNull(endings, nameof(endings));
+            _processor = processor; // opsiyonel: politika/kriz yaşam döngüsü
         }
 
         public GameSession Session => _session;
@@ -73,6 +77,10 @@ namespace DengeGame.Application
             // Karar oyunu bitirmediyse turu ilerlet (süreli etkiler işlenir).
             if (!_session.State.IsEnded)
                 _session.Turns.AdvanceTurn();
+
+            // Politika/kriz yaşam döngüsü (her tur).
+            if (!_session.State.IsEnded)
+                _processor?.Process(_session.State, _effects, _random);
 
             // Son denetimi (önce özel EndGameEffect, sonra sınır sonları).
             if (!_session.State.IsEnded)
