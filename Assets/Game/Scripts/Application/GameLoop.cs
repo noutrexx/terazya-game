@@ -74,6 +74,10 @@ namespace DengeGame.Application
 
             _session.State.RecordDecision(new DecisionRecord(card.Id, side, _session.State.CurrentTurn));
 
+            // Zincir tamamlandı mı? (devam kartı + sonrasını zamanlamıyorsa zincir bitti)
+            if (!string.IsNullOrEmpty(card.PreviousEventId) && !SchedulesNext(card.EffectsFor(side)))
+                _session.State.IncrementCompletedChains();
+
             // Karar oyunu bitirmediyse turu ilerlet (süreli etkiler işlenir).
             if (!_session.State.IsEnded)
                 _session.Turns.AdvanceTurn();
@@ -97,6 +101,14 @@ namespace DengeGame.Application
             }
 
             return SelectAndPresent();
+        }
+
+        private static bool SchedulesNext(System.Collections.Generic.IReadOnlyList<EffectData> effects)
+        {
+            if (effects == null) return false;
+            foreach (var e in effects)
+                if (e != null && e.Kind == EffectKind.ScheduleEvent) return true;
+            return false;
         }
 
         private Result SelectAndPresent()

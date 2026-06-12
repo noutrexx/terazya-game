@@ -74,9 +74,14 @@ namespace DengeGame.Presentation
                                  "'Denge/İçerik/Karakterleri Üret' çalıştırın.");
             var characters = new CharacterDirectory(characterDb != null ? characterDb.BuildList() : new List<Character>());
 
+            const int maxTermTurns = 60;
+            var endingDb = Resources.Load<EndingDatabase>(EndingDatabase.ResourcesPath);
+            var endingRegistry = new EndingRegistry(endingDb != null ? endingDb.BuildList() : new List<EndingDefinition>());
+
             IEndingEvaluator endings = new CompositeEndingEvaluator(
                 new BoundaryEndingEvaluator(),
-                new CharacterEndingEvaluator(characters.All));
+                new CharacterEndingEvaluator(characters.All),
+                new TermLimitEndingEvaluator(maxTermTurns));
 
             var policyDb = Resources.Load<PolicyDatabase>(PolicyDatabase.ResourcesPath);
             var crisisDb = Resources.Load<CrisisDatabase>(CrisisDatabase.ResourcesPath);
@@ -87,7 +92,7 @@ namespace DengeGame.Presentation
             IGameFlow flow = new GameFlow(transition, () => Environment.TickCount,
                 poolProvider, selection, decisions, random, endings, processor);
 
-            _services = new GameServices(random, time, save, selection, decisions, transition, characters, flow);
+            _services = new GameServices(random, time, save, selection, decisions, transition, characters, endingRegistry, flow);
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => InjectControllers(scene);

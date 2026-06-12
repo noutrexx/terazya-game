@@ -37,6 +37,11 @@ namespace DengeGame.Domain
         public string EndingReason { get; private set; }
         public int TotalScore { get; private set; }
 
+        // Skor için sayaçlar.
+        public int ResolvedCrisisCount { get; private set; }
+        public int FailedCrisisCount { get; private set; }
+        public int CompletedChainCount { get; private set; }
+
         public int Seed { get; }
         public int TurnsPerYear { get; }
 
@@ -160,6 +165,24 @@ namespace DengeGame.Domain
             ActiveCrises.Remove(c);
             return true;
         }
+
+        /// <summary>Krizi çözülmüş olarak sonlandırır (skor sayacı). Kararla (EndCrisisEffect) çağrılır.</summary>
+        public bool ResolveCrisis(string crisisId)
+        {
+            if (!EndCrisis(crisisId)) return false;
+            ResolvedCrisisCount++;
+            return true;
+        }
+
+        /// <summary>Krizi başarısız olarak sonlandırır (skor sayacı). İşleyicinin fail yolundan çağrılır.</summary>
+        public bool FailCrisis(string crisisId)
+        {
+            if (!EndCrisis(crisisId)) return false;
+            FailedCrisisCount++;
+            return true;
+        }
+
+        public void IncrementCompletedChains() => CompletedChainCount++;
 
         // --- Zamanlama / süreli etkiler ---
 

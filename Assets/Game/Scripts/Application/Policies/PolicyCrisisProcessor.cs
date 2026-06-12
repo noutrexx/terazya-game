@@ -120,7 +120,7 @@ namespace DengeGame.Application.Policies
                         if (!string.IsNullOrEmpty(def.FailEndingReason) &&
                             random.NextDouble() < def.FailEndingChance)
                             state.EndGame(def.FailEndingReason);
-                        state.EndCrisis(ac.CrisisId);
+                        state.FailCrisis(ac.CrisisId);
                     }
                 }
             }

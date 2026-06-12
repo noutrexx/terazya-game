@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: EndingDatabase
+  m_EditorClassIdentifier: DengeGame.Infrastructure:DengeGame.Infrastructure.Data:EndingDatabase
+  endings:
+  - {fileID: 11400000, guid: 0e866c2cdadf2fe4693626f03029ccfa, type: 2}
+  - {fileID: 11400000, guid: cf41e5fc25c359d41ba4e95136924f92, type: 2}
+  - {fileID: 11400000, guid: 78cf0fcc081360f4787ebce51f64fa60, type: 2}
+  - {fileID: 11400000, guid: c1d68df4a66a43e4381929ad2ebf2bd5, type: 2}
+  - {fileID: 11400000, guid: 742573115a696f241955476f55ea6648, type: 2}
+  - {fileID: 11400000, guid: c92e33b56b0f6d44e91325db6294e533, type: 2}
+  - {fileID: 11400000, guid: 0d2be8681826a5b439bf2a77b242bdb0, type: 2}
+  - {fileID: 11400000, guid: aa228f6968f04914dbaf66bbd7856f48, type: 2}
+  - {fileID: 11400000, guid: 7a85b0befd977fa43b055a62856fb8ed, type: 2}
+  - {fileID: 11400000, guid: 4c73c775b11474b46959de53f4f13240, type: 2}
+  - {fileID: 11400000, guid: a04752ac7c2764640a8b9786715461b2, type: 2}
+  - {fileID: 11400000, guid: 7b0bc17dd8ac0bd43b19925a0d4f6b47, type: 2}
+  - {fileID: 11400000, guid: ca860d7fd51213040b0c43be6143b4d4, type: 2}
+  - {fileID: 11400000, guid: 1c2194f20f259744a96158013ffa0a76, type: 2}
+  - {fileID: 11400000, guid: 4575ccbc680da2845b33a86d381efcee, type: 2}
+  - {fileID: 11400000, guid: 0e85177e0b81ff34d87c34ba7cc2470d, type: 2}
+  - {fileID: 11400000, guid: 725f7dd9c27821f4f808df5e47891f07, type: 2}

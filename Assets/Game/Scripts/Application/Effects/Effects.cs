@@ -94,7 +94,7 @@ namespace DengeGame.Application.Effects
         public Result Validate() =>
             string.IsNullOrWhiteSpace(CrisisId) ? Result.Failure("EndCrisisEffect: kriz id boş.") : Result.Success();
 
-        public void Apply(EffectContext context) => context.State.EndCrisis(CrisisId);
+        public void Apply(EffectContext context) => context.State.ResolveCrisis(CrisisId);
     }
 
     /// <summary>Bir karakterle ilişkiyi değiştirir (-100..100 sınırında).</summary>

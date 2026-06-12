@@ -1,5 +1,6 @@
 using DengeGame.Application;
 using DengeGame.Application.Effects;
+using DengeGame.Application.Endings;
 using DengeGame.Core;
 
 namespace DengeGame.Presentation
@@ -17,6 +18,7 @@ namespace DengeGame.Presentation
         public IDecisionEffectService Decisions { get; }
         public ISceneTransitionService SceneTransition { get; }
         public CharacterDirectory Characters { get; }
+        public EndingRegistry Endings { get; }
         public IGameFlow Flow { get; }
 
         public GameServices(
@@ -27,6 +29,7 @@ namespace DengeGame.Presentation
             IDecisionEffectService decisions,
             ISceneTransitionService sceneTransition,
             CharacterDirectory characters,
+            EndingRegistry endings,
             IGameFlow flow)
         {
             Random = Guard.NotNull(random, nameof(random));
@@ -36,6 +39,7 @@ namespace DengeGame.Presentation
             Decisions = Guard.NotNull(decisions, nameof(decisions));
             SceneTransition = Guard.NotNull(sceneTransition, nameof(sceneTransition));
             Characters = Guard.NotNull(characters, nameof(characters));
+            Endings = Guard.NotNull(endings, nameof(endings));
             Flow = Guard.NotNull(flow, nameof(flow));
         }
     }

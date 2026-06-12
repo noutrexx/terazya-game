@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0916e6b0df3e5354da83dd31015dcbb7, type: 3}
+  m_Name: Ending_Sinir_Savasi
+  m_EditorClassIdentifier: 
+  ending:
+    Id: "S\u0131n\u0131r Sava\u015F\u0131"
+    Title: "S\u0131n\u0131r Sava\u015F\u0131"
+    Description: "Gerilim t\u0131rmand\u0131, s\u0131n\u0131rda \xE7at\u0131\u015Fma
+      ba\u015Flad\u0131."
+    Category: 0
+    Rarity: 1
+    ThemeColor:
+      R: 0.7
+      G: 0.25
+      B: 0.22
+    MetaRewardPoints: 20
